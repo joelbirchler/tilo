@@ -11,3 +11,7 @@ You can build tilo like this:
 For development, enable the _watch_ flag:
 
 `browserify src/tilo.js -o build/tilo.js -w`
+
+# License
+
+All files _except images_ are covered under the MIT license described in LICENSE.md.
