@@ -7,21 +7,21 @@ window.tilo = tilo;
 
 var board = new tilo.board([
     [],
-    ["wood", "wood", "wood", "woodScreen", "wood", "wood", "wood", "woodScreen", "wood", "wood", "wood", "woodScreen", "wood", "wood", "wood"],
-    ["wood", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "wood"],
-    ["wood", "grayStoneWater", "grayStoneWater", "grayStoneWater", "grayStoneWater", "grayStoneWater", "grayStoneWater", "grayStoneWater", "grayStoneWater", "grayStoneWater", "grayStoneWater", "grayStoneWater", "grayStoneWater", "grayStoneWater", "wood"],
-    ["wood", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "wood"],
-    ["wood", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "wood"],
-    ["wood", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "wood"],
-    ["wood", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "wood"],
-    ["wood", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "grayStoneFloor", "wood"],
-    ["wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood", "wood"]
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    ["earth-alone", "stone-alone", "earth-alone", "stone-alone", "earth-alone", "stone-alone", "earth-alone", "stone-alone", "earth-alone", "stone-alone", "earth-alone", "stone-alone", "earth-alone", "stone-alone"]
   ],
-  15,
+  14,
   10
   );
   
-var sheet = new tilo.spritesheet(require('../images/spritesheet-64.json'));
+var sheet = new tilo.spritesheet(require('../images/kenney-70.json'));
 sheet.load(function() {
   board.draw(this);
 });

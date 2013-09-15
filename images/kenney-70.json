@@ -1,0 +1,25 @@
+{
+  'image': 'images/kenney-70.png',
+  'px': 70,
+  'map': {
+
+    'stone-alone': [0, 0],
+    'stone-ledge-left': [1, 0],
+    'stone-top': [2, 0],
+    'stone-ledge-right': [3, 0],
+    'stone-top-left': [1, 1],
+    'stone-fill': [2, 1],
+    'stone-top-right': [3, 1],
+
+    'earth-alone': [0, 2],
+    'earth-ledge-left': [1, 2],
+    'earth-top': [2, 2],
+    'earth-ledge-right': [3, 2],
+    'earth-top-left': [1, 3],
+    'earth-fill': [2, 3],
+    'earth-top-right': [3, 3],
+
+    'water-fill': [1, 4],
+    'water-top': [2, 4]
+  }
+}

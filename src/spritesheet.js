@@ -24,7 +24,7 @@ exports.spritesheet = function(imageSrcOrObject, map, px) {
   this.draw = function(spriteName, tileX, tileY) {
     var dims = map[spriteName];
     if (dims) {
-      tilo.context.drawImage(image, dims[0], dims[1], dims[2], dims[3], (tileX * px), (tileY * px) - (dims[3] - px), dims[2], dims[3]);
+      tilo.context.drawImage(image, dims[0] * px, dims[1] * px, px, px, (tileX * px), (tileY * px), px, px);
     }
     return that;
   }
