@@ -1,8 +1,6 @@
 * Migration (we are going to merge this project with yetibox)
-	* Bring in the sprites from yetibox
+	* Smart tile rendering (select curved variants on edges, write this as apply-able to single tile or as a pass across full board)
 	* Water is in a foreground layer
-	* Landscape generation (managed by tilo.js but give board helper functions like fills and sin wave fills)
-	* Smart tile rendering (select curved variants on edges)
 
 * Background image (tilt with screen)
 

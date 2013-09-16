@@ -25,8 +25,16 @@ module.exports={
   }
 }
 },{}],2:[function(require,module,exports){
-exports.board = function(map, width, height) {
-  var x, y;
+exports.board = function(width, height) {
+  var x, y, map = [], that = this;
+
+  this.width = _.valueFunc(width);
+  this.height = _.valueFunc(height);
+  this.right = _.valueFunc(width - 1);
+  this.bottom = _.valueFunc(height - 1);
+
+
+  _.times(height, function(y) { map[y] = []; });
   
   this.draw = function(spritesheet) {
     for (y = 0; y < height; y++) {
@@ -34,9 +42,44 @@ exports.board = function(map, width, height) {
         spritesheet.draw(map[y][x], x, y);
       }
     }
+
+    return that;
+  };
+
+  this.place = function(x, y, tileType) {
+  	return that.fill(x, y, x, y, tileType);
+  };
+
+  this.platform = function(x, y, count, tileType) {
+  	return that.fill(x, y, x + count, y, tileType);
+  };
+
+  this.fill = function(x1, y1, x2, y2, tileType) {
+  	for (var y = y1; y <= y2; y++) {
+  		for (var x = x1; x <= x2; x++) {
+  			map[y][x] = tileType;
+  		}
+  	}
+
+	return that;
+  };
+
+  this.wave = function(amplitude, offset, tileType) {
+	stretch = Math.random() * 0.6
+	_.times(that.width(), function(x) {
+		that.fill(x, Math.floor(that.bottom() + (Math.sin(x * stretch + offset) * amplitude)), x, that.bottom(), tileType);
+	});
+
+	return that;
   }
 }
 },{}],3:[function(require,module,exports){
+_.mixin({
+	'valueFunc': function(value) {
+		return function() { return value; };
+	}
+});
+},{}],4:[function(require,module,exports){
 exports.spritesheet = function(imageSrcOrObject, map, px) {
   var that = this,
     imageSrc,
@@ -68,7 +111,9 @@ exports.spritesheet = function(imageSrcOrObject, map, px) {
     return that;
   }
 }
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
+require('./extended-lodash.js');
+
 var tilo = {
   context: document.getElementById('canvas').getContext('2d'),
   spritesheet: require('./spritesheet.js').spritesheet,
@@ -76,22 +121,36 @@ var tilo = {
 };
 window.tilo = tilo;
 
-var board = new tilo.board([
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    ["earth-alone", "stone-alone", "earth-alone", "stone-alone", "earth-alone", "stone-alone", "earth-alone", "stone-alone", "earth-alone", "stone-alone", "earth-alone", "stone-alone", "earth-alone", "stone-alone"]
-  ],
-  14,
-  10
+var board = new tilo.board(14, 10);
+
+// generate landscape
+board
+  .fill(0, board.bottom() - Math.round(Math.random() * 4), board.right(), board.bottom(), 'water-fill')
+  .wave(
+    Math.ceil(Math.random() * board.height()/1.5), 
+    Math.random() * board.height(), 
+    'earth-fill'
   );
-  
+
+// random stones
+_.times(Math.floor(Math.random() * 5), function() {
+  board.place(
+    Math.floor(Math.random() * board.width()), 
+    Math.floor(Math.random() * board.height()/2) + board.height()/2, 
+    'stone-fill'
+  );
+});
+
+// random platform?
+Math.floor(Math.random() * 3) || board.platform(
+  Math.floor(Math.random() * board.width()), 
+  Math.floor(Math.random() * board.height()), 
+  Math.ceil(Math.random() * 4), 
+  'stone-fill'
+);
+
+
+// get started
 var sheet = new tilo.spritesheet(require('../images/kenney-70.json'));
 sheet.load(function() {
   board.draw(this);
@@ -109,5 +168,5 @@ sheet.load(function() {
 // TODO: block pattern matching -- sun moon sun moon / ABCD
 // TODO: lever toggles
 // TODO: buttons (use blocks to keep down)
-},{"../images/kenney-70.json":1,"./board.js":2,"./spritesheet.js":3}]},{},[4])
+},{"../images/kenney-70.json":1,"./board.js":2,"./extended-lodash.js":3,"./spritesheet.js":4}]},{},[5])
 ;
