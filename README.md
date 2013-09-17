@@ -8,9 +8,9 @@ You can build tilo like this:
 
 `browserify src/tilo.js -o build/tilo.js`
 
-For development, enable the _watch_ flag:
+For development, user [watchify](https://github.com/substack/watchify):
 
-`browserify src/tilo.js -o build/tilo.js -w`
+`watchify src/tilo.js -o build/tilo.js -v`
 
 # License
 
