@@ -1,11 +1,10 @@
-exports.board = function(width, height) {
+exports.board = function(width, height, canvasContext) {
   var x, y, map = [], that = this;
 
   this.width = _.valueFunc(width);
   this.height = _.valueFunc(height);
   this.right = _.valueFunc(width - 1);
   this.bottom = _.valueFunc(height - 1);
-
 
   _.times(height, function(y) { map[y] = []; });
 
@@ -23,8 +22,7 @@ exports.board = function(width, height) {
   this.draw = function(spritesheet) {
     for (y = 0; y < height; y++) {
       for (x = 0; x < width; x++) {
-        map[y][x] && spritesheet.draw(map[y][x], that.caps(x, y), x, y);
-        map[y][x] && console.log(x, y, that.caps(x,y));
+        map[y][x] && spritesheet.draw(map[y][x], that.caps(x, y), x, y, canvasContext);
       }
     }
 

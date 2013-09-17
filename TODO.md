@@ -1,12 +1,11 @@
-* Migration (we are going to merge this project with yetibox)
-	* Water is in a foreground layer
-
 * Background image (tilt with screen)
 
 * View/event-handling
 	* Figure out UI
 	* Tap to place block
 	* Long-tap to destroy block (after 1 second or delay, not on mouseUp)
+
+* Replace yetibox project
 
 * Yeti (2 tiles high)
 	* Unlike blocks, these are positioned by pixel not tile
