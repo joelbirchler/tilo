@@ -21,8 +21,8 @@ exports.spritesheet = function(imageSrcOrObject, map, px) {
     return that;
   }
   
-  this.draw = function(spriteName, tileX, tileY) {
-    var dims = map[spriteName];
+  this.draw = function(spriteName, spriteCaps, tileX, tileY) {
+    var dims = map[spriteName + '-' + spriteCaps] || map[spriteName + '-'];
     if (dims) {
       tilo.context.drawImage(image, dims[0] * px, dims[1] * px, px, px, (tileX * px), (tileY * px), px, px);
     }

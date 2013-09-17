@@ -1,5 +1,4 @@
 * Migration (we are going to merge this project with yetibox)
-	* Smart tile rendering (select curved variants on edges, write this as apply-able to single tile or as a pass across full board)
 	* Water is in a foreground layer
 
 * Background image (tilt with screen)
