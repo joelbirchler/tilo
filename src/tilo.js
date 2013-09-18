@@ -7,8 +7,8 @@ var tilo = {
 window.tilo = tilo;
 
 var boards = {
-  fore: new tilo.board(14, 10, document.getElementById('canvas-fore').getContext('2d')),
-  mid: new tilo.board(14, 10, document.getElementById('canvas-mid').getContext('2d'))
+  fore: new tilo.board(16, 10, document.getElementById('canvas-fore').getContext('2d')),
+  mid: new tilo.board(16, 10, document.getElementById('canvas-mid').getContext('2d'))
 };
 
 // generate landscape
@@ -34,7 +34,7 @@ boards.fore.fill(0, boards.fore.bottom() - Math.round(Math.random() * 4), boards
 
 
 // get started
-var sheet = new tilo.spritesheet(require('../images/kenney-70.json'));
+var sheet = new tilo.spritesheet(require('../images/kenney-64.json'));
 sheet.load(function() {
   boards.mid.draw(this);
   boards.fore.draw(this);

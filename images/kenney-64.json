@@ -1,6 +1,6 @@
 {
-  'image': 'images/kenney-70.png',
-  'px': 70,
+  'image': 'images/kenney-64.png',
+  'px': 64,
   'map': {
     'stone-nesw': [0, 0],
     'stone-nsw': [1, 0],

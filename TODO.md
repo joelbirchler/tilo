@@ -1,15 +1,16 @@
-* Background image (tilt with screen)
-
 * View/event-handling
-	* Figure out UI
-	* Tap to place block
-	* Long-tap to destroy block (after 1 second or delay, not on mouseUp)
+	* Tray with block selection
+	* Tap to place/destroy block
 
 * Replace yetibox project
+
+* Background image (tilt with screen)
 
 * Yeti (2 tiles high)
 	* Unlike blocks, these are positioned by pixel not tile
 	* Should bounce/fall when device is shaken
+
+* Fish
 
 
 {
