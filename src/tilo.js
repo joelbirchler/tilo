@@ -29,8 +29,8 @@ _.times(Math.floor(Math.random() * 5), function(i) {
 });
 
 // water
-
-boards.fore.fill(0, boards.fore.bottom() - Math.round(Math.random() * 4), boards.fore.right(), boards.fore.bottom(), 'water')
+Math.floor(Math.random() * 2) || 
+  boards.fore.fill(0, boards.fore.bottom() - Math.round(Math.random() * 4), boards.fore.right(), boards.fore.bottom(), 'water')
 
 
 // get started
