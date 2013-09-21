@@ -18,6 +18,8 @@
     'earth-': [2, 3],
     'earth-ne': [3, 3],
 
+    'wood-nesw': [0, 1], 'wood-': [0, 1],
+
     'water-': [1, 4],
     'water-n': [2, 4]
   }

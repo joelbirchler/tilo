@@ -10,6 +10,10 @@ exports.spritesheet = function(imageSrcOrObject, map, px) {
     map = imageSrcOrObject.map;
     px = imageSrcOrObject.px;
   }
+
+  this.px = function() {
+    return px;
+  };
   
   this.load = function(callback) {
     image = new Image();

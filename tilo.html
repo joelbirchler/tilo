@@ -28,12 +28,8 @@
     #canvas-fore {
     	opacity: 0.65;
     }
-    #tray {
-      position: absolute;
+    #canvas-tray {
       top: 640px;
-      left: 0;
-      height: 128px;
-      width: 1024px;
       background-color: black;
     }
   </style>
@@ -41,10 +37,9 @@
 <body>
   
   <div id="game">
-	  <canvas id="canvas-back" width="1024" height="768"></canvas>
 	  <canvas id="canvas-mid" width="1024" height="768"></canvas>
 	  <canvas id="canvas-fore" width="1024" height="768"></canvas>
-    <div id="tray"></div>
+    <canvas id="canvas-tray" width="1024" height="128"></canvas>
   </div>
   
   <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.0.0/lodash.min.js" type ="text/javascript"></script>

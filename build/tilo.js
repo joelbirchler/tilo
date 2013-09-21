@@ -19,6 +19,8 @@ module.exports=module.exports={
     'earth-': [2, 3],
     'earth-ne': [3, 3],
 
+    'wood-nesw': [0, 1], 'wood-': [0, 1],
+
     'water-': [1, 4],
     'water-n': [2, 4]
   }
@@ -101,6 +103,10 @@ exports.spritesheet = function(imageSrcOrObject, map, px) {
     map = imageSrcOrObject.map;
     px = imageSrcOrObject.px;
   }
+
+  this.px = function() {
+    return px;
+  };
   
   this.load = function(callback) {
     image = new Image();
@@ -125,7 +131,8 @@ require('./extended-lodash.js');
 
 var tilo = {
   spritesheet: require('./spritesheet.js').spritesheet,
-  board: require('./board.js').board
+  board: require('./board.js').board,
+  tray: require('./tray.js').tray
 };
 window.tilo = tilo;
 
@@ -155,12 +162,56 @@ _.times(Math.floor(Math.random() * 5), function(i) {
 Math.floor(Math.random() * 2) || 
   boards.fore.fill(0, boards.fore.bottom() - Math.round(Math.random() * 4), boards.fore.right(), boards.fore.bottom(), 'water')
 
+// tray
+var tray = new tilo.tray(1024, 128, document.getElementById('canvas-tray').getContext('2d'));
+tray.add(['earth', 'stone', 'wood']);
 
 // get started
 var sheet = new tilo.spritesheet(require('../images/kenney-64.json'));
 sheet.load(function() {
   boards.mid.draw(this);
   boards.fore.draw(this);
+  tray.draw(this);
 });
-},{"../images/kenney-64.json":1,"./board.js":2,"./extended-lodash.js":3,"./spritesheet.js":4}]},{},[5])
+},{"../images/kenney-64.json":1,"./board.js":2,"./extended-lodash.js":3,"./spritesheet.js":4,"./tray.js":6}],6:[function(require,module,exports){
+exports.tray = function(width, height, canvasContext) {
+	var items = [], selectedIndex = 0, that = this;
+
+	this.add = function(tileType) {
+		_.contains(items, tileType) || (items = items.concat(tileType));
+	};
+
+	this.remove = function(tileType) {
+		_.pull(items, tileType);
+		return that;
+	};
+
+	this.select = function(tileTypeOrIndex) {
+		if (_.isNumber(tileTypeOrIndex)) { return items[tileTypeOrIndex]; }
+		selectedIndex = _.indexOf(items, tileTypeOrIndex);
+	};
+
+	this.selected = function() {
+		return _items[selectedIndex];
+	};
+
+	this.draw = function(spritesheet) {
+		var px = spritesheet.px();
+
+		// highlight selected item
+		var gradX = px/2 + ((1 + selectedIndex * 2) * px);
+		var grad = canvasContext.createRadialGradient(gradX, px, 0, gradX, px, px);
+  		grad.addColorStop(0, 'rgba(1, 255, 255, 1)');
+  		grad.addColorStop(1, 'rgba(1, 159, 98, 0)');
+  		canvasContext.fillStyle = grad;
+  		canvasContext.fillRect(0, 0, width, height);
+
+		_.each(items, function(item, index) {
+			spritesheet.draw(item, 'nesw', 1 + index * 2, 0.5, canvasContext);
+		});
+
+	    return that;
+	};
+};
+},{}]},{},[5])
 ;
